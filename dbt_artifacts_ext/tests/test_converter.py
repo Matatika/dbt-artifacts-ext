@@ -21,8 +21,8 @@ def test_run(converter: Converter):
     assert f"test_project{converter.file_ext}" in output
 
 
-def test_run_with_filters(converter: Converter):
-    converter.exclude_package_names = ["test_project"]
+def test_run_exclude_packages(converter: Converter):
+    converter.exclude_packages = ["test_project"]
     converter.run()
 
     output = os.listdir(converter.output_dir)

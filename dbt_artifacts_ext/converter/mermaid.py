@@ -50,7 +50,7 @@ class MermaidConverter(Converter):
 
                 if (
                     resource_type not in self.resource_types
-                    or package_name in self.exclude_package_names
+                    or package_name in self.exclude_packages
                 ):
                     log.info(f"{progress}Skipping {resource_type} '{table_name}'")
                     continue

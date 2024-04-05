@@ -50,7 +50,7 @@ class Converter(abc.ABC):
         log.debug(f"Output directory: {self.output_dir}")
 
         resource_types = os.getenv("DBT_ARTIFACTS_RESOURCE_TYPES")
-        exclude_package_names = os.getenv("DBT_ARTIFACTS_EXCLUDE_PACKAGES")
+        exclude_packages = os.getenv("DBT_ARTIFACTS_EXCLUDE_PACKAGES")
 
         self.resource_types = (
             [ResourceType(rt) for rt in json.loads(resource_types)]
@@ -58,9 +58,7 @@ class Converter(abc.ABC):
             else [ResourceType.ALL]
         )
 
-        self.exclude_package_names = (
-            json.loads(exclude_package_names) if exclude_package_names else []
-        )
+        self.exclude_packages = json.loads(exclude_packages) if exclude_packages else []
         if ResourceType.ALL in self.resource_types:
             self.resource_types = [
                 rt for rt in ResourceType if rt is not ResourceType.ALL
