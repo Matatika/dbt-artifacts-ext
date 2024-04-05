@@ -59,12 +59,14 @@ class Converter(abc.ABC):
         )
 
         self.exclude_packages = json.loads(exclude_packages) if exclude_packages else []
+
         if ResourceType.ALL in self.resource_types:
             self.resource_types = [
                 rt for rt in ResourceType if rt is not ResourceType.ALL
             ]
 
         log.debug(f"Resource types: {self.resource_types}")
+        log.debug(f"Exclude packages: {self.exclude_packages}")
 
     @property
     @abc.abstractmethod
