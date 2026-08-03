@@ -75,7 +75,7 @@ class Converter(abc.ABC):
     def file_ext(self) -> str: ...
 
     @abc.abstractmethod
-    def convert(self) -> List[ConversionContext]:
+    def convert(self) -> list[ConversionContext]:
         return []
 
     @abc.abstractmethod
